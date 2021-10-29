@@ -1,5 +1,5 @@
 local library = {}
-    function library:NewWindow(windowname)
+    function library:NewWindow(windowname, loading)
         local ReCode = Instance.new("ScreenGui")
         local topbg = Instance.new("ImageLabel")
         local top = Instance.new("Folder")
@@ -12,43 +12,47 @@ local library = {}
         local bodybg = Instance.new("Frame")
         local UICorner_2 = Instance.new("UICorner")
         ----------------------------------------------------
-        local loading = Instance.new("ScreenGui")
-        local body_19 = Instance.new("Frame")
-        local UICorner_19 = Instance.new("UICorner")
-        local loadinglabel = Instance.new("TextLabel")
+        if loading == true then
+            local loading = Instance.new("ScreenGui")
+            local body_19 = Instance.new("Frame")
+            local UICorner_19 = Instance.new("UICorner")
+            local loadinglabel = Instance.new("TextLabel")
+            ----------------------------------------------------
+            loading.Name = "loading"
+            loading.Parent = game:GetService("CoreGui")
+            loading.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+            body_19.Name = "body"
+            body_19.Parent = loading
+            body_19.BackgroundColor3 = Color3.fromRGB(22, 22, 28)
+            body_19.AnchorPoint = Vector2.new(0.5, 0.5)
+            body_19.Position = UDim2.new(0.5, 0, 0.5, 0)
+            body_19.Size = UDim2.new(0, 232, 0, 72)
+            UICorner_19.Parent = body_19
+            loadinglabel.Parent = body_19
+            loadinglabel.Text = "Checking..."
+            loadinglabel.BackgroundColor3 = Color3.fromRGB(22, 22, 28)
+            loadinglabel.BorderSizePixel = 0
+            loadinglabel.BackgroundTransparency = 0
+            loadinglabel.Position = UDim2.new(0, 0, 0.416666657, 0)
+            loadinglabel.Size = UDim2.new(0, 232, 0, 20)
+            loadinglabel.Font = Enum.Font.SourceSans
+            loadinglabel.Name = "loadinglabel"
+            loadinglabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+            loadinglabel.TextSize = 14.000
         ----------------------------------------------------
-        loading.Name = "loading"
-        loading.Parent = game:GetService("CoreGui")
-        loading.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-        body_19.Name = "body"
-        body_19.Parent = loading
-        body_19.BackgroundColor3 = Color3.fromRGB(22, 22, 28)
-        body_19.AnchorPoint = Vector2.new(0.5, 0.5)
-        body_19.Position = UDim2.new(0.5, 0, 0.5, 0)
-        body_19.Size = UDim2.new(0, 232, 0, 72)
-        UICorner_19.Parent = body_19
-        loadinglabel.Parent = body_19
-        loadinglabel.Text = "Checking..."
-        loadinglabel.BackgroundColor3 = Color3.fromRGB(22, 22, 28)
-        loadinglabel.BorderSizePixel = 0
-        loadinglabel.BackgroundTransparency = 0
-        loadinglabel.Position = UDim2.new(0, 0, 0.416666657, 0)
-        loadinglabel.Size = UDim2.new(0, 232, 0, 20)
-        loadinglabel.Font = Enum.Font.SourceSans
-        loadinglabel.Name = "loadinglabel"
-        loadinglabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-        loadinglabel.TextSize = 14.000
+            if (assert(syn, loadinglabel.Text == ("Sorry you must use synapse X!"))) then
+                loadinglabel.Text = ("Synapse x detected!")
+                wait(1)
+            end
         ----------------------------------------------------
-        if (assert(syn, loadinglabel.Text == ("Sorry you must use synapse X!"))) then
-            loadinglabel.Text = ("Synapse x detected!")
-            wait(1)
         end
-        ----------------------------------------------------
         ReCode.Name = windowname
         ReCode.Parent = game:GetService("CoreGui")
         ReCode.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
         ReCode.Enabled = false
-        loadinglabel.Text = "Loading menu..."
+        if loading == true then
+            loadinglabel.Text = "Loading menu..."
+        end
         wait(0.1)
         topbg.Name = "Main"
         topbg.Parent = ReCode
@@ -119,7 +123,9 @@ local library = {}
             end
         end)
         local vv = {}
-        loadinglabel.Text = "Loading library..."
+        if loading == true then
+            loadinglabel.Text = "Loading library..."
+        end
         wait(0.1)
         function vv:NewSubTab(subtabname, location, location2)
             local subtab = Instance.new("TextButton")
@@ -226,7 +232,9 @@ local library = {}
             v.Visible = false
             tabcontainer[v.Name].underline.Visible = false
         end
-        loadinglabel.Text = "Loading tabs..."
+        if loading == true then
+            loadinglabel.Text = "Loading tabs..."
+        end
         wait(0.1)
         function vv:NewButton(buttonname, location, postition, callback)
             local button = Instance.new("TextButton")
@@ -248,7 +256,9 @@ local library = {}
                 pcall(callback)
             end)
         end
-        loadinglabel.Text = "Loading buttons..."
+        if loading == true then
+            loadinglabel.Text = "Loading buttons..."
+        end
         function vv:ChangeLog()
             local Changelog = Instance.new("Frame")
             local Section1 = Instance.new("Frame")
@@ -533,7 +543,9 @@ local library = {}
             TextLabel_2.TextSize = 14.000
             TextLabel_2.TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
         end
-        loadinglabel.Text = "Loading images..."
+        if loading == true then
+            loadinglabel.Text = "Loading images..."
+        end
         wait(0.1)
         function vv:NewDropDown(dropdownname, list, location, position, callback)
             local Dropdown = Instance.new("ImageLabel")
@@ -633,7 +645,9 @@ local library = {}
                 end)
             end
         end
-        loadinglabel.Text = "Finishing touches..."
+        if loading == true then
+            loadinglabel.Text = "Finishing touches..."
+        end
         wait(0.1)
         function vv:NewSlider(slidername, location, minvalue, maxvalue, position, callback)
             local Slider = Instance.new("ImageLabel")
