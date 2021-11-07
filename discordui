@@ -2421,21 +2421,21 @@ function DiscordLib:Window(text)
 				local function move(input)
 					local pos =
 						UDim2.new(
-							math.clamp((input.Position.X - SliderFrame.AbsolutePosition.X) / SliderFrame.AbsoluteSize.X, 0, 0.1),
+							math.clamp((input.Position.X - SliderFrame.AbsolutePosition.X) / SliderFrame.AbsoluteSize.X, 0, 1),
 							-6,
 							-0.644999981,
 							0
 						)
 					local pos1 =
 						UDim2.new(
-							math.clamp((input.Position.X - SliderFrame.AbsolutePosition.X) / SliderFrame.AbsoluteSize.X, 0, 0.1),
+							math.clamp((input.Position.X - SliderFrame.AbsolutePosition.X) / SliderFrame.AbsoluteSize.X, 0, 1),
 							0,
 							0,
 							8
 						)
 					CurrentValueFrame.Size = pos1
 					Zip.Position = pos
-					local value = math.floor(((pos.X.Scale * max) / max) * (max - min) + min)
+					local value = math.floor(((pos.X.Scale * max) / max) * (max - min) + min / 2)
 					ValueLabel.Text = tostring(value)
 					pcall(callback, value)
 				end
