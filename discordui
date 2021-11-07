@@ -2435,7 +2435,7 @@ function DiscordLib:Window(text)
 						)
 					CurrentValueFrame.Size = pos1
 					Zip.Position = pos
-					local value = math.floor(((pos.X.Scale * max) / max) * (max - min) + min / 2)
+					local value = math.floor(((pos.X.Scale * max) / max) * (max - min) + min)
 					ValueLabel.Text = tostring(value)
 					pcall(callback, value)
 				end
